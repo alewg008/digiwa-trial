@@ -1,0 +1,127 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Container setup */
+body,
+html {
+  height: 100%;
+  font-family: "Poppins", sans-serif;
+  background-color: #f7c95d; /* Gold background */
+}
+
+/* Layout container */
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Top section (yellow background) */
+.top-section {
+  flex: 1;
+  background: linear-gradient(to bottom, #ddac5f 60%, #f5d585 40%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+  position: relative;
+}
+
+/* Logo and text */
+.logo-container {
+  text-align: center;
+  color: white;
+}
+
+.logo-img {
+  width: 20vw;
+  /* height: auto; */
+  margin: 8vh auto 4vh;
+}
+
+/* DIGIWA Title */
+.app-title {
+  font-size: 36px;
+  font-weight: bold;
+  color: white;
+}
+
+.app-subtitle {
+  font-size: 16px;
+  font-weight: 500;
+  color: white;
+}
+
+/* Bottom sheet section */
+.bottom-sheet {
+  /* margin: 4rem 0 0; */
+  background-color: #5d3b27;
+  color: white;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
+  padding: 32px 24px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Drag bar */
+.drag-bar {
+  width: 60px;
+  height: 6px;
+  background-color: #b6895d;
+  border-radius: 3px;
+  margin-bottom: 20px;
+}
+
+/* Headline */
+.headline {
+  font-size: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-bottom: 1vh;
+  margin-top: 5vh;
+}
+
+/* Description */
+.description {
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 32px;
+  color: #ffffffcc;
+  margin-top: 3vh;
+}
+
+/* Button */
+.lanjut-btn {
+  background-color: white;
+  color: #1c1c1c;
+  padding: 14px 36px;
+  border: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  transition: all 0.2s ease;
+  margin-top: 10vh;
+}
+
+.lanjut-btn:hover {
+  background-color: #f0f0f0;
+}
+
+@media (max-width: 480px) {
+  .logo-img {
+    width: 50vw;
+  }
+}

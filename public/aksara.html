@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./assets/style/aksara.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+    <title>Tabel Aksara Jawa</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  </head>
+
+  <body>
+    <div class="header">
+      <div class="back-button"></div>
+      <div class="title">Tabel Aksara Jawa</div>
+    </div>
+
+    <div class="aksara-box">
+      <div class="aksara-item" data-huruf="ha" data-next="na">
+        <img src="./assets/images/aksara/tombol_tabel/Ha.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="na" data-next="ca">
+        <img src="./assets/images/aksara/tombol_tabel/Na.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ca" data-next="ra">
+        <img src="./assets/images/aksara/tombol_tabel/Ca.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ra" data-next="ka">
+        <img src="./assets/images/aksara/tombol_tabel/Ra.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ka" data-next="da">
+        <img src="./assets/images/aksara/tombol_tabel/Ka.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="da" data-next="ta">
+        <img src="./assets/images/aksara/tombol_tabel/Da.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ta" data-next="sa">
+        <img src="./assets/images/aksara/tombol_tabel/Ta.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="sa" data-next="wa">
+        <img src="./assets/images/aksara/tombol_tabel/Sa.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="wa" data-next="la">
+        <img src="./assets/images/aksara/tombol_tabel/Wa.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="la" data-next="pa">
+        <img src="./assets/images/aksara/tombol_tabel/La.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="pa" data-next="dha">
+        <img src="./assets/images/aksara/tombol_tabel/Pa.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="dha" data-next="ja">
+        <img src="./assets/images/aksara/tombol_tabel/Dha.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ja" data-next="ya">
+        <img src="./assets/images/aksara/tombol_tabel/Ja.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ya" data-next="nya">
+        <img src="./assets/images/aksara/tombol_tabel/Ya.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="nya" data-next="ma">
+        <img src="./assets/images/aksara/tombol_tabel/Nya.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ma" data-next="ga">
+        <img src="./assets/images/aksara/tombol_tabel/Ma.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ga" data-next="ba">
+        <img src="./assets/images/aksara/tombol_tabel/Ga.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="ba" data-next="tha">
+        <img src="./assets/images/aksara/tombol_tabel/Ba.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="tha" data-next="nga">
+        <img src="./assets/images/aksara/tombol_tabel/Tha.svg" alt="" />
+      </div>
+      <div class="aksara-item" data-huruf="nga" data-next="">
+        <img src="./assets/images/aksara/tombol_tabel/Nga.svg" alt="" />
+      </div>
+    </div>
+  </body>
+  <script>
+    $(".back-button").on("click", function () {
+      window.location = "./main.html";
+    });
+
+    $(".aksara-item").on("click", function () {
+      const data = $(this).data("huruf");
+      window.location = "./drawing.html?aksara=" + data;
+    });
+  </script>
+</html>

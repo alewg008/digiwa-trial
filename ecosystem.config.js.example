@@ -1,0 +1,18 @@
+require('dotenv').config().parsed;
+
+module.exports = {
+    apps : [
+        {
+            name:`digiwa:3000`,
+            script: "./app.js",
+            merge_logs: true,
+            instances: 2,
+            env: {
+                "PORT": "3000",
+                "NODE_ENV": "production",
+                ...require('dotenv').config().parsed
+            },
+        }
+    ]
+}
+

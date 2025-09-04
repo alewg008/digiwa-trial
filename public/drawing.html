@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+
+    <title>DIGIWA</title>
+    <link rel="stylesheet" href="./assets/style/style.css" />
+    <link rel="stylesheet" href="./assets/style/drawing.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <main>
+      <header class="chat-header margin-top-3">
+        <div class="back-button" onclick="history.back()">
+          <!-- <i class="fas fa-arrow-left"></i> -->
+        </div>
+        <h1 class="chat-title">Menulis Aksara Jawa</h1>
+      </header>
+      <div class="frame">
+        <canvas class="content" id="drawingCanvas"></canvas>
+      </div>
+      <div class="group-button">
+        <button class="button" id="compare">Check</button>
+        <button class="button" id="clear-button">Clear Screen</button>
+      </div>
+      <!-- <div class="group-button">
+        <button class="next-button">
+          <i class="fas fa-solid fa-circle-chevron-right"></i>
+        </button>
+      </div> -->
+    </main>
+  </body>
+  <script>
+    var urlParams = new URLSearchParams(window.location.search);
+    const canvas = document.getElementById("drawingCanvas");
+    const ctx = canvas.getContext("2d");
+
+    function drawBackground() {
+      ctx.globalAlpha = 0.5;
+      ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
+      ctx.globalAlpha = 1.0;
+    }
+
+    window.addEventListener("resize", () => {
+      drawBackground();
+    });
+
+    var background = new Image();
+    background.src = `./assets/images/aksara/huruf/img${urlParams.get(
+      "aksara"
+    )}.png`;
+
+    background.onload = function () {
+      drawBackground();
+    };
+
+    function resizeCanvas() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    window.addEventListener("resize", resizeCanvas);
+    resizeCanvas();
+
+    // Handle both mouse and touch events
+    let isDrawing = false;
+
+    // Untuk Desktop
+    canvas.addEventListener("mousedown", startDrawing);
+    canvas.addEventListener("mousemove", draw);
+    canvas.addEventListener("mouseup", stopDrawing);
+    canvas.addEventListener("mouseout", stopDrawing);
+
+    // Untuk Mobile
+    canvas.addEventListener("touchstart", handleTouch);
+    canvas.addEventListener("touchmove", handleTouch);
+    canvas.addEventListener("touchend", stopDrawing);
+
+    function startDrawing(e) {
+      isDrawing = true;
+      draw(e);
+    }
+
+    function draw(e) {
+      if (!isDrawing) return;
+      ctx.lineWidth = 13;
+      ctx.lineCap = "round";
+      ctx.strokeStyle = "#000";
+
+      // Dapatkan posisi (untuk mouse atau touch)
+      const pos = getPosition(e);
+
+      ctx.lineTo(pos.x, pos.y);
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.moveTo(pos.x, pos.y);
+    }
+    function handleTouch(e) {
+      e.preventDefault(); // Prevent scroll
+      const touch = e.touches[0];
+      const mouseEvent = {
+        offsetX: touch.clientX - canvas.offsetLeft,
+        offsetY: touch.clientY - canvas.offsetTop,
+      };
+
+      if (e.type === "touchstart") {
+        startDrawing(mouseEvent);
+      } else if (e.type === "touchmove") {
+        draw(mouseEvent);
+      }
+    }
+
+    function stopDrawing() {
+      isDrawing = false;
+      ctx.beginPath();
+    }
+
+    function getPosition(e) {
+      let x, y;
+      if (e.touches) {
+        const touch = e.touches[0];
+        x = touch.clientX - canvas.offsetLeft;
+        y = touch.clientY - canvas.offsetTop;
+      } else {
+        x = e.offsetX;
+        y = e.offsetY;
+      }
+      return { x, y };
+    }
+
+    $("#clear-button").click(() => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      drawBackground();
+    });
+
+    $("#compare").click(() => {
+      const canvasCtx = canvas.getContext("2d");
+      const tempCanvas = document.createElement("canvas");
+      tempCanvas.width = canvas.width;
+      tempCanvas.height = canvas.height;
+      const tempCtx = tempCanvas.getContext("2d");
+
+      // Draw reference image to temp canvas
+      tempCtx.globalAlpha = 1;
+      tempCtx.drawImage(background, 0, 0, canvas.width, canvas.height);
+      tempCtx.globalAlpha = 1;
+
+      const canvasData = canvasCtx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      ).data;
+      const referenceData = tempCtx.getImageData(
+        0,
+        0,
+        canvas.width,
+        canvas.height
+      ).data;
+
+      let matchingPixels = 0;
+      let totalPixels = 0;
+
+      console.log(canvasData);
+      console.log(referenceData);
+
+      let matchCount = 0;
+      let veryDifferent = 0;
+      let somewhatSimilar = 0;
+
+      for (let i = 0; i < canvasData.length; i += 4) {
+        const tDiff = Math.abs(canvasData[i + 3] - referenceData[i + 3]);
+        if (tDiff >= 128 && tDiff <= 208) {
+          somewhatSimilar++;
+        } else {
+          veryDifferent++;
+        }
+
+        if (i <= 5) {
+          console.log(tDiff);
+        }
+
+        // const rDiff = Math.abs(canvasData[i] - referenceData[i]);
+        // const gDiff = Math.abs(canvasData[i + 1] - referenceData[i + 1]);
+        // const bDiff = Math.abs(canvasData[i + 2] - referenceData[i + 2]);
+
+        // const totalDiff = rDiff + gDiff + bDiff;
+
+        // matchCount++;
+        // if (rDiff < 25 && gDiff < 25 && bDiff < 25) {
+        //   somewhatSimilar++;
+        // } else if (totalDiff > 128) {
+        //   veryDifferent++;
+        // }
+      }
+
+      console.log(
+        "Data:",
+        matchCount,
+        ", Cocok:",
+        somewhatSimilar,
+        ", Tidak cocok:",
+        veryDifferent
+      );
+    });
+  </script>
+</html>

@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Poppins", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #000;
+  color: white;
+}
+
+/* Layer 1: Background Image */
+.background-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/cerita_rakyat/timunmas.png");
+  background-size: cover;
+  background-position: center;
+  z-index: -2;
+}
+
+/* Layer 2: Gradient Overlay */
+.gradient-layer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.8) 0%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+  z-index: -1;
+}
+
+/* Layer 3: Main UI */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-inline: 15px;
+}
+
+.back-button {
+  width: 2em;
+  height: 2em;
+  left: 1em;
+  top: 50%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 16px;
+  background-image: url("../images/cerita_rakyat/backicon.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+h1 {
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  text-align: right;
+  flex: 1;
+}
+
+.story-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+  color: #ffd700; /* Gold color for title */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.translate-button {
+  background-color: #be7d5f;
+  color: white;
+  border: none;
+  padding: 5px 20px;
+  border-radius: 20px;
+  font-weight: bold;
+  margin: 10px auto;
+  display: block;
+  font-size: 11px;
+  cursor: pointer;
+}
+
+.story-container {
+  /* background-color: rgba(0, 0, 0, 0.5); */
+  text-align: justify;
+  border-radius: 15px;
+  padding: 20px;
+  flex: 1;
+  overflow-y: auto;
+  line-height: 1.6;
+  font-size: 16px;
+  margin-bottom: 20px;
+  /* border: 1px solid rgba(255, 255, 255, 0.1); */
+}
+
+/* Scrollbar styling */
+.story-container::-webkit-scrollbar {
+  width: 5px;
+}
+
+.story-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+.story-container::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 20px;
+  }
+
+  .story-title {
+    font-size: 28px;
+  }
+
+  .story-container {
+    font-size: 15px;
+    padding: 15px;
+  }
+}

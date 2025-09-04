@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <title>DIGIWA</title>
+  <link rel="stylesheet" href="assets/style/style.css" />
+  <link rel="stylesheet" href="assets/style/chat.css" />
+  <link rel="stylesheet" href="assets/style/chat-buble.css" />
+  <link rel="stylesheet" href="assets/style/chat-form.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+
+  <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+  />
+</head>
+<body>
+  <main>
+    <header class="chat-header margin-top-3">
+      <button class="back-button" onclick="history.back()">
+        <!-- <i class="fas fa-arrow-left"></i> -->
+      </button>
+      <h1 class="chat-title">Ngobrol Sama DIWA</h1>
+    </header>
+    <div class="row center-align hidden">
+      <div class="user text-center" id="userId"></div>
+    </div>
+    <div class="chat-container">
+      <div class="chat-box" id="chat-box">
+        <!-- Pesan akan ditampilkan di sini -->
+        <div class="chat-container" id="chat-container">
+        </div>
+      </div>
+      <form class="chat-form" id="chat-form">
+        <div class="input-wrapper">
+          <input type="text" id="chat-input" placeholder="Ketik pesan..." autocomplete="off" />
+          <button type="submit" id="send-button">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  var title_click = 0;
+  var socket = io();
+  const generateRandomString = (length=6) => Math.random().toString(20).substr(2, length);
+
+  window.onload = function () {
+    let userid = "";
+    if (localStorage.getItem("userid")) {
+      userid = localStorage.getItem("userid");
+    } else {
+      userid = generateRandomString(8);
+      localStorage.setItem("userid",userid);
+    } 
+
+    $('#userId').html(userid);
+    socket.emit('register', userid);
+
+    $(".chat-title").bind("click", function() {
+      title_click++
+
+      if (title_click > 5) {
+        userid = generateRandomString(8);
+        localStorage.setItem("userid",userid);
+        socket.emit('register', userid);
+        $('#userId').html(userid);
+        alert(`User id has been updated : ${userid}`);
+        title_click = 0
+      }
+    })
+
+    $("form").on('submit', function(event){
+      event.preventDefault();
+      let msg = $("#chat-input").val();
+      msg =  msg.replace(/(<([^>]+)>)/gi, "");
+      $("#chat-container").append(`<div class="chat-bubble left"><p>${msg}</p></div>`)
+
+      const userid = localStorage.getItem("userid");
+      socket.emit('message', {"msg" : msg, "userid" : userid});
+
+      $("#chat-input").val("");
+      var chatboard = document.getElementById("chat-container");
+      chatboard.scrollTo(0, chatboard.scrollHeight);
+    });
+
+    setInterval(function () {
+      socket.emit('register', userid);
+    }, 5000);
+
+    socket.on('connect', () => {
+      console.log('Terhubung ke server');
+      socket.emit('register', userid); 
+    });
+
+    socket.on('message', function (obj) {
+      $("#chat-container").append(`<div class="chat-bubble right"><p>${obj.msg}</p></div>`)
+      var chatboard = document.getElementById("chat-container");
+      chatboard.scrollTo(0, chatboard.scrollHeight);
+    });
+  }
+</script>
+
+</html>

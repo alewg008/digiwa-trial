@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cerita Rakyat - Timun Mas</title>
+    <link rel="stylesheet" href="assets/style/ceritaroro.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <!-- Layer 1: Background Image -->
+    <div class="background-layer"></div>
+
+    <!-- Layer 2: Gradient Overlay -->
+    <div class="gradient-layer"></div>
+
+    <!-- Layer 3: Main UI -->
+    <div class="main-container">
+      <div class="header">
+        <button class="back-button"></button>
+        <p>Membaca Cerita Rakyat</p>
+        <div style="width: 40px"></div>
+        <!-- Spacer for alignment -->
+      </div>
+
+      <div class="story-title">Nyi Roro Jonggrang</div>
+
+      <button class="translate-button">Terjemahkan</button>
+
+      <div class="story-container"></div>
+    </div>
+  </body>
+
+  <script>
+    window.onload = function () {
+      let language = "jawa";
+      const jawa = `Nalika jaman rumiyin, wonten satunggaling karaton ingkang ageng, ingkang sinebat Karaton Prambanan. Rakyatipun sami gesang tentrem, ayem, lan kabingahan, awit dipun pinangku dening ratu ingkang adil saha wicaksana, Prabu Baka. <br/> <br/>
+
+Ananging, kawilujengan punika boten langgeng. Karaton Prambanan diserang dening Karaton Pengging. Perang ageng boten saged dipun hindari. Prabu Baka saha bala tentaranipun kalah, amargi boten siyaga lan kalah siasat. Prabu Baka tilar donya amargi kapuntuh senjata saktinipun Bandung Bandawasa. <br/> <br/>
+
+Karaton Pengging kagungan kabingahan, amargi saged ngrebut Karaton Prambanan. <br/> <br/>
+
+Nalika Bandung Bandawasa mlebet Karaton Prambanan, piyambakipun mirsani satunggaling putri ingkang ayu sanget, ingkang boten sanes putrinipun Prabu Baka, Roro Jonggrang. Tanpa mikir dangu, Bandung Bandawasa nyuwun Roro Jonggrang dados garwanipun. <br/> <br/>
+
+“Roro Jonggrang, kersa panjenengan dados permaisuriku?” — pangandikanipun Bandung Bandawasa. <br/> <br/>
+
+Roro Jonggrang boten kersa langsung wangsul, lajeng ngendika: <br/> <br/>
+
+“Kula kersa, nanging kula kagungan syarat...” <br/> <br/>
+
+“Punapa syaratipun?” — pitakenipun Bandung Bandawasa. <br/> <br/>
+
+“Gawekna kula sewu candi (1000 candi), nanging kedah rampung sajeroning wengi punika!” — wangsulanipun Roro Jonggrang. <br/> <br/>
+
+Bandung Bandawasa nampi tantangan punika kanthi keyakinan. Wengi punika, piyambakipun nyeluk para jin lan lelembut kagem mbiyantu damel candi. <br/> <br/>
+
+Sakderengipun subuh, candhi sampun meh rampung, wis ana 999 candhi. Roro Jonggrang mirsani punika, lajeng kagungan rasa ajrih menawi Bandung Bandawasa kasil. <br/> <br/>
+
+Roro Jonggrang lajeng nyeluk para dayang, banjur ngandika: <br/> <br/>
+
+“Padangna geni, gebugna lesung, lan taburana kembang wangi, supaya jin lan lelembut panginten menawi sampun esuk!” <br/> <br/>
+
+Para jin lan lelembut punika ngira sampun subuh, lajeng padha musna, boten nerusaken pakaryanipun. Bandung Bandawasa ngraos mangkel, amargi dipun apusi. <br/> <br/>
+
+Saking nesunipun, Bandung Bandawasa ngucap sabda lan ngowahi Roro Jonggrang dados arca, minangka candi kaping sewu, nggenepi permintaanipun piyambak. <br/> <br/>`;
+
+      const bahasa = `Pada zaman dahulu, ada sebuah kerajaan besar bernama Prambanan. Rakyatnya hidup damai, tenteram, dan bahagia karena dipimpin oleh raja yang adil dan bijaksana, Prabu Baka. <br/> <br/>
+
+Namun kedamaian itu tidak berlangsung lama. Kerajaan Prambanan diserang oleh Kerajaan Pengging. Perang besar tidak bisa dihindari. Prabu Baka dan pasukannya kalah karena kurang persiapan dan strategi. Ia tewas oleh senjata sakti milik Bandung Bandawasa. <br/> <br/>
+
+Kerajaan Pengging pun bersuka cita karena berhasil merebut Prambanan. <br/> <br/>
+
+Saat Bandung Bandawasa berada di istana Prambanan, ia melihat seorang putri yang sangat cantik, yaitu Roro Jonggrang, anak dari Prabu Baka. Tanpa banyak pikir, ia langsung melamar Roro Jonggrang. <br/> <br/>
+
+“Roro Jonggrang, maukah kau menjadi permaisuriku?” — tanya Bandung Bandawasa. <br/> <br/>
+
+Roro Jonggrang tidak langsung menjawab, lalu berkata: <br/> <br/>
+
+“Saya bersedia, tapi saya punya syarat…” <br/> <br/>
+
+“Apa syaratnya?” — tanya Bandung Bandawasa. <br/> <br/>
+
+“Buatkan aku seribu candi, dan semuanya harus selesai dalam semalam!” — jawab Roro Jonggrang. <br/> <br/>
+
+Bandung Bandawasa menerima tantangan itu dengan percaya diri. Malam itu, ia memanggil jin dan makhluk halus untuk membantunya membangun candi. <br/> <br/>
+
+Menjelang subuh, jumlah candi sudah 999 buah. Roro Jonggrang melihat itu, dan ia merasa takut kalau Bandung Bandawasa berhasil. <br/> <br/>
+
+Ia segera memanggil para dayang dan berkata: <br/> <br/>
+
+“Nyalakan api, tumbuk lesung, dan taburkan bunga wangi, supaya jin dan makhluk halus mengira hari sudah pagi!” <br/> <br/>
+
+Makhluk-makhluk itu pun mengira pagi telah datang dan berhenti bekerja. Bandung Bandawasa sangat marah karena merasa ditipu. <br/> <br/>
+
+Karena amarahnya, Bandung Bandawasa mengucapkan kutukan dan mengubah Roro Jonggrang menjadi patung, sebagai candi ke-seribu, untuk memenuhi permintaannya sendiri. <br/> <br/>`;
+
+      $(".story-container").html(jawa);
+
+      $(".translate-button").on("click", function () {
+        if (language == "jawa") {
+          $(".story-container").html(bahasa);
+          language = "bahasa";
+        } else {
+          $(".story-container").html(jawa);
+          language = "jawa";
+        }
+      });
+
+      $(".back-button").on("click", function () {
+        window.location = "./main.html";
+      });
+    };
+  </script>
+</html>

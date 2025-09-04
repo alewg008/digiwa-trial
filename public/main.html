@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DIGIWA - Belajar Bahasa Jawa Krama</title>
+    <link rel="stylesheet" href="./assets/style/main.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Readex+Pro:wght@160..700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="main">
+      <div class="container">
+        <div class="top-container">
+          <div class="header">
+            <img src="./assets/images/main_screen/header_logo.svg" alt="" />
+          </div>
+          <!-- <div class="subtitle">Belajar Bahasa Jawa Krama</div> -->
+
+          <div class="speech-box">
+            <div class="character-image">
+              <img src="./assets/images/main_screen/Banner.svg" alt="" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="bottom-container">
+        <div class="section-title">Materi Pembelajaran</div>
+
+        <div class="button-container">
+          <div class="aksara-cerita">
+            <div class="btn aksara" id="btn-aksara">
+              <img src="./assets/images/main_screen/Aksara.svg" alt="" />
+            </div>
+            <div class="btn cerita" id="btn-cerita">
+              <img src="./assets/images/main_screen/Cerita.svg" alt="" />
+            </div>
+          </div>
+          <div class="btn chat-ai" id="btn-chat">
+            <img src="./assets/images/main_screen/Ai.svg" alt="" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    $("#btn-aksara").on("click", function () {
+      window.location = "./aksara.html";
+    });
+    $("#btn-cerita").on("click", function () {
+      window.location = "./pilihancerita.html";
+    });
+    $("#btn-chat").on("click", function () {
+      window.location = "./chat.html";
+    });
+  </script>
+</html>

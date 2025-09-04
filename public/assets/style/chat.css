@@ -1,0 +1,87 @@
+* {
+    font-family: -apple-system, BlinkMacSystemFont, "Poppins", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+.chat-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 12px 16px;
+  }
+
+.chat-container {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.chat-box {
+    flex-grow: 1;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    overflow-y: auto;
+    height: 60vh;
+}
+
+.chat-message {
+    margin-bottom: 8px;
+    padding: 8px 12px;
+    background-color: #f1f1f1;
+    border-radius: 8px;
+    width: fit-content;
+    max-width: 80%;
+}
+
+.chat-form {
+    display: flex;
+    gap: 8px;
+}
+
+.chat-form input[type=\"text\"] {
+    flex: 1;
+    padding: 8px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.chat-form button {
+    padding: 8px 16px;
+    border: none;
+    background-color: #b0470b;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.chat-form button:hover {
+    background-color: #8a3809;
+}
+
+.chat-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 2px 2px black;
+}
+
+.bottom-space {
+    height: 0vh;
+}
+
+.user {
+    font-size: 5px;
+    margin-bottom: 16px;
+}
+
+.back-button {
+    position: absolute;
+    left: 16px;
+    background: none;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    color: #333;
+  }

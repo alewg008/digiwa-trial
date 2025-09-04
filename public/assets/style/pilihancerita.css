@@ -1,0 +1,106 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-image: url(../images/cerita_rakyat/indonesia4.png);
+  color: #fff;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 1rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 12px 16px;
+  margin: 5vh auto 2vh;
+  width: 400px;
+  max-width: 500px;
+}
+.back-button {
+  position: absolute;
+  left: 15px;
+  width: 2em;
+  height: 2em;
+  top: 55%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  font-size: 16px;
+  background-image: url("../images/cerita_rakyat/backicon.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+/* h1 {
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  color: white;
+} */
+
+.title {
+  font-family: "Poppins";
+  font-size: 16px;
+  font-weight: 600;
+  color: white;
+  margin-top: 5vh;
+}
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 330px;
+  /* max-width: 347px; */
+  /* border-radius: 30px; */
+  max-height: 350px;
+}
+
+.card {
+  border-radius: 20px;
+  /* overflow: hidden; */
+  position: relative;
+  width: 330px;
+  max-height: 400px;
+  margin: 3vh auto 1vh;
+  /* box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  background-color: #f0e0c0; */
+}
+
+.card .background-image {
+  border-radius: 30px;
+  position: relative;
+  width: 330px;
+  height: 400px;
+  object-fit: absolute;
+  z-index: 1;
+}
+
+.card .label {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  text-shadow: 2px 2px 5px black;
+  font-family: "Georgia", serif;
+}
+
+/* @media (min-width: 768px) {
+  .card-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+} */
